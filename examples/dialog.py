@@ -21,7 +21,7 @@ import os, sys
 sys.path.append(os.path.abspath(r'..\..\..'))
 
 # Enthought library imports.
-from pyface.api import confirm, error, information, warning, YES
+from pyface.api import confirm, error, information, warning, single_choice, YES
 from pyface.api import ApplicationWindow, GUI
 from pyface.action.api import Action, MenuBarManager, MenuManager
 
@@ -61,6 +61,9 @@ class MainWindow(ApplicationWindow):
         information(parent, 'Going...')
         warning(parent, 'Going......')
         error(parent, 'Gone!')
+
+        print single_choice(parent, ['One more!', "Or is it two?"], "Please select:",
+                    "Choice")
 
         if confirm(parent, 'Should I exit?') == YES:
             self.close()
