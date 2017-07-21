@@ -27,6 +27,8 @@ import time
 from thread import allocate_lock
 from threading import Thread
 
+import six
+
 from traits.api import (HasPrivateTraits, Property, Str, Int, List, Dict,
                         File, Instance, Bool, Undefined, TraitError, Float,
                         Any, cached_property)
@@ -149,7 +151,7 @@ def add_object_prefix ( dict, object, prefix ):
     """ Adds all traits from a specified object to a dictionary with a specified
         name prefix.
     """
-    for name, value in object.trait_get().iteritems():
+    for name, value in six.iteritems(object.trait_get()):
         dict[ prefix + name ] = value
 
 
@@ -356,10 +358,10 @@ class ImageInfo ( HasPrivateTraits ):
 
     def _get_image_info_code ( self ):
         data = dict((name, repr(value))
-                    for name, value in self.trait_get(
+                    for name, value in six.iteritems(self.trait_get(
                         'name', 'image_name', 'description', 'category',
                         'keywords', 'alignment'
-                    ).iteritems())
+                    )))
         data.update(self.trait_get('width', 'height'))
         sides = ['left', 'right', 'top', 'bottom']
         data.update(('b'+name, getattr(self.border, name)) for name in sides)
@@ -691,10 +693,10 @@ class ImageVolume ( HasPrivateTraits ):
 
     def _get_image_volume_code ( self ):
         data = dict((name, repr(value))
-                    for name, value in self.trait_get(
+                    for name, value in six.iteritems(self.trait_get(
                         'description', 'category', 'keywords', 'aliases',
                         'time_stamp'
-                    ).iteritems())
+                    )))
         data['info'] = ',\n'.join(info.image_volume_info_code
                                   for info in self.info)
         return (ImageVolumeTemplate % data)

@@ -1,6 +1,8 @@
 # Standard library imports.
-from cStringIO import StringIO
 import sys
+
+import six
+from six.moves import cStringIO
 
 # Enthought library imports.
 from traits.api import Either, Enum, HasStrictTraits, Int, Instance, List, Str
@@ -22,7 +24,7 @@ class LayoutItem(HasStrictTraits):
     def pformat(self, indent=0, multiline=False):
         """ Pretty-format the layout item. Returns a string.
         """
-        stream = StringIO()
+        stream = cStringIO()
         self.pstream(stream, indent, multiline)
         return stream.getvalue()
 
@@ -40,7 +42,7 @@ class LayoutItem(HasStrictTraits):
 
         args = [(None, arg) for arg in self.pargs()]
         traits = []
-        for name, trait in sorted(self.traits().iteritems()):
+        for name, trait in sorted(six.iteritems(self.traits())):
             if not trait.pretty_skip and not trait.transient:
                 value = getattr(self, name)
                 if trait.default != value:

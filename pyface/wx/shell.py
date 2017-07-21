@@ -123,7 +123,7 @@ F9                Pop-up window of matching History items.
         if hasattr(self.other, name):
             return getattr(self.other, name)
         else:
-            raise AttributeError, name
+            raise AttributeError(name)
 
     def __setattr__(self, name, value):
         if self.__dict__.has_key(name):
@@ -131,7 +131,7 @@ F9                Pop-up window of matching History items.
         elif hasattr(self.other, name):
             return setattr(self.other, name, value)
         else:
-            raise AttributeError, name
+            raise AttributeError(name)
 
     def _getAttributeNames(self):
         """Return list of magic attributes to extend introspection."""
@@ -300,7 +300,7 @@ class Shell(wxStyledTextCtrl):
         if startupScript and os.path.isfile(startupScript):
             startupText = 'Startup script executed: ' + startupScript
             self.push('print %s;execfile(%s)' % \
-                      (`startupText`, `startupScript`))
+                      (repr(startupText), repr(startupScript)))
         else:
             self.push('')
 

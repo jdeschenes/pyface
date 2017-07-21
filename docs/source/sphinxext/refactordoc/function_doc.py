@@ -7,6 +7,8 @@
 #  Copyright (c) 2011, Enthought, Inc.
 #  All rights reserved.
 #------------------------------------------------------------------------------
+from __future__ import print_function
+
 from base_doc import BaseDoc
 from line_functions import get_indent, add_indent
 from fields import ArgumentField, ListItemWithTypeField, ListItemField
@@ -74,7 +76,7 @@ class FunctionDoc(BaseDoc):
 
         """
         if self.verbose:
-            print 'Refactoring Notes'
+            print('Refactoring Notes')
 
         descriptions = []
         index = self.index

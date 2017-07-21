@@ -13,10 +13,12 @@
 
 # Standard library imports.
 import __builtin__
+
 from code import compile_command, InteractiveInterpreter
-from cStringIO import StringIO
 import sys
 from time import time
+
+from six.moves import cStringIO
 
 # System package imports.
 from pyface.qt import QtCore, QtGui
@@ -139,7 +141,7 @@ class PythonWidget(HistoryConsoleWidget):
         self.interpreter = InteractiveInterpreter(self.locals)
 
         # PythonWidget protected attributes.
-        self._buffer = StringIO()
+        self._buffer = cStringIO()
         self._bracket_matcher = BracketMatcher(self._control)
         self._call_tip_widget = CallTipWidget(self._control)
         self._completion_lexer = CompletionLexer(PythonLexer())
@@ -175,7 +177,7 @@ class PythonWidget(HistoryConsoleWidget):
         self._buffer.seek(0)
         text = self._buffer.getvalue()
         self._buffer.close()
-        self._buffer = StringIO()
+        self._buffer = cStringIO()
 
         self._append_plain_text(text)
         self._control.moveCursor(QtGui.QTextCursor.End)

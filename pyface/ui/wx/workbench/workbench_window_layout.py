@@ -18,8 +18,9 @@
 """
 
 # Standard library imports.
-import cPickle
 import logging
+
+from six.moves import cPickle
 
 # Major package imports.
 import wx

@@ -11,7 +11,8 @@
 from __future__ import absolute_import
 
 import unittest
-import cStringIO
+
+from six.moves import cStringIO
 
 from pyface.qt import QtGui
 from pyface.api import Dialog, MessageDialog, OK, CANCEL

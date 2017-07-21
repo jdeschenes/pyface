@@ -2,9 +2,11 @@
 
 
 # Standard library imports.
-import cPickle
+
 import logging
 import os
+
+from six.moves import cPickle
 
 # Enthought library imports.
 from traits.etsconfig.api import ETSConfig

@@ -1,6 +1,8 @@
 # Standard library imports
 from contextlib import contextmanager
 
+import six
+
 # Enthought library imports.
 from pyface.tasks.i_dock_pane import IDockPane, MDockPane
 from traits.api import Bool, on_trait_change, Property, provides, Tuple
@@ -17,7 +19,7 @@ AREA_MAP = { 'left'   : QtCore.Qt.LeftDockWidgetArea,
              'right'  : QtCore.Qt.RightDockWidgetArea,
              'top'    : QtCore.Qt.TopDockWidgetArea,
              'bottom' : QtCore.Qt.BottomDockWidgetArea }
-INVERSE_AREA_MAP = dict((int(v), k) for k, v in AREA_MAP.iteritems())
+INVERSE_AREA_MAP = dict((int(v), k) for k, v in six.iteritems(AREA_MAP))
 
 
 @provides(IDockPane)

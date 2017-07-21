@@ -1,5 +1,6 @@
 
-from cPickle import dumps, load, loads, PickleError
+from six.moves.cPickle import dumps, load, loads, PickleError
+
 import warnings
 import io
 import sys

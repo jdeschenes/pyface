@@ -2,6 +2,8 @@
 from contextlib import contextmanager
 import logging
 
+import six
+
 # Enthought library imports.
 from pyface.tasks.i_dock_pane import IDockPane, MDockPane
 from traits.api import Bool, on_trait_change, Property, provides, Tuple, Str, Int
@@ -18,7 +20,7 @@ AREA_MAP = { 'left'   : aui.AUI_DOCK_LEFT,
              'right'  : aui.AUI_DOCK_RIGHT,
              'top'    : aui.AUI_DOCK_TOP,
              'bottom' : aui.AUI_DOCK_BOTTOM }
-INVERSE_AREA_MAP = dict((int(v), k) for k, v in AREA_MAP.iteritems())
+INVERSE_AREA_MAP = dict((int(v), k) for k, v in six.iteritems(AREA_MAP))
 
 # Logging
 logger = logging.getLogger(__name__)

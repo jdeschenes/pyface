@@ -14,7 +14,9 @@
 
 # Standard library imports
 from io import BytesIO
-from cPickle import dumps, load, loads
+
+import six
+from six.moves.cPickle import dumps, load, loads
 
 # System library imports
 from pyface.qt import QtCore, QtGui

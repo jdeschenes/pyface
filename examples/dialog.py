@@ -13,6 +13,7 @@
 #------------------------------------------------------------------------------
 """ Dialog example. """
 
+from __future__ import print_function
 
 # Standard library imports.
 import os, sys
@@ -58,7 +59,7 @@ class MainWindow(ApplicationWindow):
 
         parent = self.control
 
-        print choose_one(parent, "Make a choice", ['one', 'two', 'three'])
+        print(choose_one(parent, "Make a choice", ['one', 'two', 'three']))
 
         information(parent, 'Going...')
         warning(parent, 'Going......')

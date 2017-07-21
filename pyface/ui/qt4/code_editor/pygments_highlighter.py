@@ -9,6 +9,8 @@
 # Description: <Enthought pyface code editor>
 #------------------------------------------------------------------------------
 
+import six
+
 from pyface.qt import QtGui
 
 from pygments.lexer import RegexLexer, _TokenType, Text, Error
@@ -118,7 +120,7 @@ class BlockUserData(QtGui.QTextBlockUserData):
 
     def __init__(self, **kwds):
         QtGui.QTextBlockUserData.__init__(self)
-        for key, value in kwds.iteritems():
+        for key, value in six.iteritems(kwds):
             setattr(self, key, value)
 
     def __repr__(self):

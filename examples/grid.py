@@ -13,6 +13,7 @@
 #------------------------------------------------------------------------------
 """ Expandable example. """
 
+from __future__ import print_function
 
 # Standard library imports.
 import os, sys
@@ -114,7 +115,7 @@ class MainWindow(SplitApplicationWindow):
     def _on_grid_anytrait_changed(self, tree, trait_name, old, new):
         """ Called when any trait on the tree has changed. """
 
-        print 'trait', trait_name, 'value', new
+        print('trait', trait_name, 'value', new)
 
         return
 

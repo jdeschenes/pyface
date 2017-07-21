@@ -645,24 +645,17 @@ class ConsoleWidget(QtGui.QWidget):
             if os.path.isfile(path):
                 raise OSError("%s exists, but is not a directory."%path)
 
-        f = open(filename, 'w')
-        try:
+        with open(filename, 'w') as f:
             f.write(img_re.sub(
                 lambda x: self.image_tag(x, path = path, format = "png"),
                 html))
-        except Exception, e:
-            f.close()
-            raise e
-        else:
-            f.close()
         return filename
 
 
     def export_xhtml(self, filename):
         """ Export the contents of the ConsoleWidget as XHTML with inline SVGs.
         """
-        f = open(filename, 'w')
-        try:
+        with open(filename, 'w') as f:
             # N.B. this is overly restrictive, but Qt's output is
             # predictable...
             img_re = re.compile(r'<img src="(?P<name>[\d]+)" />')
@@ -678,11 +671,6 @@ class ConsoleWidget(QtGui.QWidget):
             f.write(img_re.sub(
                 lambda x: self.image_tag(x, path = None, format = "svg"),
                 html))
-        except Exception, e:
-            f.close()
-            raise e
-        else:
-            f.close()
         return filename
 
     def fix_html_encoding(self, html):

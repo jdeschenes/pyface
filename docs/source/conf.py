@@ -45,7 +45,9 @@ copyright = '2008-2016, Enthought'
 # The default replacements for |version| and |release|, also used in various
 # other places throughout the built documents.
 d = {}
-execfile(os.path.join('..', '..', 'pyface', '__init__.py'), d)
+exec(compile(open(os.path.join('..', '..', 'pyface', '__init__.py')).read(),
+             os.path.join('..', '..', 'pyface', '__init__.py'), 'exec'), d)
+
 version = release = d['__version__']
 
 # There are two options for replacing |today|: either, you set today to some

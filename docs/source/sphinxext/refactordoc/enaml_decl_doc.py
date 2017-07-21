@@ -7,6 +7,8 @@
 #  Copyright (c) 2011, Enthought, Inc.
 #  All rights reserved.
 #------------------------------------------------------------------------------
+from __future__ import print_function
+
 from base_doc import BaseDoc
 from line_functions import get_indent, replace_at, add_indent, fix_backspace
 from fields import AttributeField
@@ -30,7 +32,7 @@ class EnamlDeclDoc(BaseDoc):
         """Refactor the attributes section to sphinx friendly format"""
 
         if self.verbose:
-            print '{0} Section'.format(header)
+            print('{0} Section'.format(header))
 
         index = self.index
         self.remove_lines(index, 2)

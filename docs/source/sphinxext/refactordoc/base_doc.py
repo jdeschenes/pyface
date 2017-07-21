@@ -7,6 +7,8 @@
 #  Copyright (c) 2011, Enthought, Inc.
 #  All rights reserved.
 #------------------------------------------------------------------------------
+from __future__ import print_function
+
 import re
 
 from fields import Field
@@ -243,7 +245,7 @@ class BaseDoc(object):
         header = self.peek()
         line2 = self.peek(1)
         if self.verbose:
-            print 'current line is: {0} at index {1}'.format(header, self.index)
+            print('current line is: {0} at index {1}'.format(header, self.index))
 
         # check for underline type format
         underline = re.match(r'\s*\S+\s*\Z', line2)

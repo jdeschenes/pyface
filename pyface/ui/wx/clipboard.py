@@ -10,9 +10,8 @@
 #------------------------------------------------------------------------------
 
 # Standard library imports
-from cStringIO import StringIO
-from cPickle import dumps, load, loads
-
+import six.moves as sm
+from six.moves.cPickle import dumps, load, loads
 # System library imports
 import wx
 
@@ -57,7 +56,7 @@ class Clipboard(BaseClipboard):
                 if cb.IsSupported(PythonObjectFormat):
                     cdo = wx.CustomDataObject(PythonObjectFormat)
                     if cb.GetData(cdo):
-                        file   = StringIO(cdo.GetData())
+                        file   = sm.cStringIO(cdo.GetData())
                         klass  = load(file)
                         result = load(file)
             finally:

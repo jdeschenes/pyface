@@ -2,6 +2,8 @@
 from itertools import combinations
 import logging
 
+import six
+
 # Enthought library imports.
 from traits.api import Any, HasTraits
 
@@ -47,7 +49,7 @@ class MainWindowLayout(HasTraits):
 
         # Perform the layout. This will assign fixed sizes to the dock widgets
         # to enforce size constraints specified in the PaneItems.
-        for name, direction in AREA_MAP.iteritems():
+        for name, direction in six.iteritems(AREA_MAP):
             sublayout = getattr(layout, name)
             if sublayout:
                 self.set_layout_for_area(sublayout, direction)
